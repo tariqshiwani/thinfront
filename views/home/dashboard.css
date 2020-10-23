@@ -1,0 +1,88 @@
+/* product table color change */
+
+.chart-main .info-chart table#product_tabch tbody tr:nth-child(2) .color-cir{
+    background-color: #00ACFF;
+}
+
+.chart-main .info-chart table#product_tabch tbody tr:nth-child(3) .color-cir{
+    background-color: #5096ff;
+}
+
+.chart-main .info-chart table#product_tabch tbody tr:nth-child(1) .color-cir , .chart-main .info-chart table#product_tabch tbody tr:nth-child(4) .color-cir{
+    background-color: transparent;
+}
+
+/* SO Order table color change */
+
+.chart-main .info-chart table#so_tabch tbody tr:nth-child(1) .color-cir{
+    background-color: #56e9de;
+}
+
+.chart-main .info-chart table#so_tabch tbody tr:nth-child(2) .color-cir{
+    background-color: #317ee8;
+}
+
+.chart-main .info-chart table#so_tabch tbody tr:nth-child(3) .color-cir{
+    background-color: #3ebce8;
+}
+
+.chart-main .info-chart table#so_tabch tbody tr:nth-child(4) .color-cir{
+    background-color: #7b828a;
+}
+
+/* PO Order table color change */
+
+.chart-main .info-chart table#po_tabch tbody tr:nth-child(1) .color-cir{
+    background-color: #ffb46e;
+}
+
+.chart-main .info-chart table#po_tabch tbody tr:nth-child(2) .color-cir{
+    background-color: #4b9bff;
+}
+
+.chart-main .info-chart table#po_tabch tbody tr:nth-child(3) .color-cir{
+    background-color: #ff5f5f;
+}
+
+.chart-main .info-chart table#po_tabch tbody tr:nth-child(4) .color-cir{
+    background-color: #76DDFB;
+}
+
+/* Out Shipment Order table color change */
+
+.chart-main .info-chart table#ship_tabch tbody tr:nth-child(1) .color-cir{
+    background-color: #86c7f3;
+}
+
+.chart-main .info-chart table#ship_tabch tbody tr:nth-child(2) .color-cir{
+    background-color: #ffa1b5;
+}
+
+.chart-main .info-chart table#ship_tabch tbody tr:nth-child(3) .color-cir{
+    background-color: #ffe29a;
+}
+
+.chart-canvas canvas{
+    box-shadow: inset 0 0 0 11px black;
+    -moz-box-shadow: inset 0 0 0 11px black;
+    -webkit-box-shadow: inset 0 0 0 11px #e8e8e8;
+    border-radius: 100%;
+}
+
+#chartjs-tooltip table tbody tr td{
+    background: #000;
+    color: #fff;
+    border-radius: 5px;
+    padding: 2px 5px;
+    font-size: 10px;
+}
+
+#chartjs-tooltip table tbody tr td span {
+    width: 10px;
+    height: 10px;
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    margin-right: 3px;
+    border: 1px solid #fff;
+}

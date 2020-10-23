@@ -1,0 +1,64 @@
+<nav class="light">
+  <div class="nav-block brand">
+    <a href="#">
+      <img class="" style="max-height: 30px;" src="assets/images/logo.png" />
+    </a>
+  </div>
+  <div class="nav-block menu" id="m_header_menu" style="display: none;">
+    <ul class="horizontal-menu" data-repeat="menuList">
+      <li class="menu-item">
+        <a data-repeat-item="href:Route">
+          <i class="fa fa-home"></i>
+          <span class="menu-item-text" data-repeat-item="Title"> </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="nav-block right-block">
+    <ul class="right_panel_header">
+      <li>
+        <ul class="profile-options">
+          <li>
+            <div id="userName" class="user-name">
+              <div class="dropdown">
+                <button
+                  class="btn btn-primary user-names dropdown-toggle"
+                  type="button"
+                  data-toggle="dropdown"
+                >
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a onclick="ShowProfileModal();"
+                      ><i class="fa fa-user"></i><span>My Profile</span></a
+                    >
+                  </li>
+                  <li>
+                    <a onclick="ShowChangePasswordModal();"
+                      ><i class="fa fa-key"></i><span>Change Password</span></a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="">
+            <svg class="">
+              <use xlink:href="assets/images/icons.svg#ic_bell"></use>
+            </svg>
+          </li>
+          <li class="">
+            <a id="signOut">
+              <svg class="">
+                <use xlink:href="assets/images/icons.svg#ic_logout"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script src="views/_shared/header.js"></script>

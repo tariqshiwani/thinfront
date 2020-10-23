@@ -1,0 +1,166 @@
+<div app-layout="home" app-title="Home">
+  <link href="views/home/dashboard.css" rel="stylesheet" />
+  <div page-state="dashboard">
+    <div class="page-header">
+      <div class="page-title">Dashboard</div>
+      <div class="page-tools">
+        <ul class="toolbar">
+          <li class="toolbar-item">
+            <select class="form-control grey-select" id="filter_wareDash">
+              <option value="1" selected>Today</option>
+              <option value="2">Weekly</option>
+              <option value="3">Monthly</option>
+              <option value="4">Yearly</option>
+            </select>
+          </li>
+        </ul>
+      </div> 
+    </div>
+    <div class="page-body">
+      <div class="orders-main-home" id="Ware_dash_box">
+        <div data-repeat="stats" class="row">
+          <div class="col-sm-6 col-md-3 box-ordho">
+            <div class="panel-box">
+              <div class="count" data-repeat-item="KeyFigure"></div>
+              <div class="title">
+                <span
+                  class="txtDisplay"
+                  style="font-size: 16px;"
+                  data-repeat-item="DisplayText"
+                ></span>
+                <!-- <span class="span-order">Orders</span> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row chart-main">
+        <div class="col-sm-6">
+          <div class="chart-box">
+            <div class="chart-head">
+              <svg class="menu-icon"><use xlink:href="assets/images/icons.svg#ic_po_black"></use></svg>
+              <span>Sales Orders</span>
+            </div>
+            <div class="inner-wrapper">
+              <div class="row chart-body align-items-center">
+                <div class="col-sm-6 chart-canvas">
+                  <div class="inner-wrp">
+                    <canvas id="graph" width="100%"></canvas>
+                    <!-- <p class="middle-text"><span class="ord_no">37</span><span class="order_name">Orders<span></span></p> -->
+                  </div>
+                </div>
+                <div class="col-sm-6 info-chart">
+                  <table id="so_tabch">
+                    <tbody data-repeat="SoOrders">
+                      <tr>
+                        <td>
+                          <span class="color-cir"></span>
+                        </td>
+                        <td class="title" data-repeat-item="DisplayText"></td>
+                        <td class="number" data-repeat-item="KeyFigure"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="chart-box">
+            <div class="chart-head">
+              <svg class="menu-icon"><use xlink:href="assets/images/icons.svg#ic_so_black"></use></svg>
+              <span>Purchase Orders</span>
+            </div>
+            <div class="inner-wrapper">
+              <div class="row chart-body align-items-center">
+                <div class="col-sm-6 chart-canvas">
+                  <div class="inner-wrp">
+                    <canvas id="PoGraph" width="100%"></canvas>
+                    <!-- <p class="middle-text"><span class="ord_no">37</span><span class="order_name">Orders<span></span></p> -->
+                  </div>
+                </div>
+                <div class="col-sm-6 info-chart">
+                  <table id="po_tabch">
+                    <tbody data-repeat="PoOrders">
+                      <tr>
+                        <td>
+                          <span class="color-cir"></span>
+                        </td>
+                        <td class="title" data-repeat-item="DisplayText"></td>
+                        <td class="number" data-repeat-item="KeyFigure"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="chart-box">
+            <div class="chart-head">
+              <svg class="menu-icon"><use xlink:href="assets/images/icons.svg#ic_products_black"></use></svg>
+              <span>Products</span>
+            </div>
+            <div class="inner-wrapper">
+              <div class="row chart-body align-items-center">
+                <div class="col-sm-6 chart-canvas">
+                  <div class="inner-wrp">
+                    <canvas id="ProductGraph" width="100%"></canvas>
+                    <p class="middle-text"><span class="ord_no" id="product_middle"></span><span class="order_name">Products<span></span></p>
+                  </div>
+                </div>
+                <div class="col-sm-6 info-chart">
+                  <table id="product_tabch">
+                    <tbody data-repeat="ClientProduct">
+                      <tr>
+                        <td>
+                          <span class="color-cir"></span>
+                        </td>
+                        <td class="title" data-repeat-item="DisplayText"></td>
+                        <td class="number" data-repeat-item="KeyFigure"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="chart-box">
+            <div class="chart-head">
+              <svg class="menu-icon"><use xlink:href="assets/images/icons.svg#ic_inbound_black"></use></svg>
+              <span>Outbound Shipments</span>
+            </div>
+            <div class="inner-wrapper">
+              <div class="row chart-body align-items-center">
+                <div class="col-sm-6 chart-canvas">
+                  <div class="inner-wrp">
+                    <canvas id="OShipGraph" width="100%"></canvas>
+                    <!-- <p class="middle-text"><span class="ord_no" id="product_no"></span><span class="order_name">Products<span></span></p> -->
+                  </div>
+                </div>
+                <div class="col-sm-6 info-chart">
+                  <table id="ship_tabch">
+                    <tbody data-repeat="Shipment">
+                      <tr>
+                        <td>
+                          <span class="color-cir"></span>
+                        </td>
+                        <td class="title" data-repeat-item="DisplayText"></td>
+                        <td class="number" data-repeat-item="KeyFigure"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="views/home/dashboard.js"></script>

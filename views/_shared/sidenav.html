@@ -1,0 +1,120 @@
+<div
+  id="toggle-sidenav"
+  unselectable="on"
+  class="unselectable"
+  toggle="#sidenav"
+  toggle-class="close-nav"
+></div>
+<ul
+  class="vertical-menu main-menu"
+  id="side-nav-menu"
+  data-repeat="menuList"
+></ul>
+<script>
+  var menu = {
+    menuList: [
+      {
+        title: "Dashboard",
+        route: "#home",
+        description: "Dashboard / Statstics",
+      },
+      {
+        title: "Booking",
+        link: "",
+        description: "Bookings",
+        children: [
+          {
+            title: "Manage Booking",
+            route: "#booking",
+            description: "Manage your bookings",
+          },
+          {
+            title: "New Booking",
+            route: "#booking/book",
+            description: "Create new booking",
+          },
+        ],
+      },
+      {
+        title: "Clients",
+        link: "",
+        description: "Manage Clients",
+        children: [
+          { title: "Shippers", route: "", description: "" },
+          { title: "Consignee", route: "", description: "" },
+        ],
+      },
+    ],
+  };
+  //var menu = tf.session.values["_menuitems"];
+  //  menu = JSON.parse(menu);
+  if (menu) {
+    var vmenu = new tf.tree();
+    vmenu.bind(menu.menuList, {
+      target: "#side-nav-menu",
+      display: "title",
+      value: "link",
+      render: function (item) {
+        var itm_obj = $(
+          "<li class='menu-item'  title='" +
+            item.title +
+            " (" +
+            item.description +
+            ")" +
+            "'></li>"
+        );
+        var itm_obj_a = $(
+          "<a href='" +
+            item.route +
+            "'><svg class='menu-icon'><use xlink:href='assets/images/icons.svg#" +
+            (item.icon == "undefined" || item.icon == null
+              ? "ic_dashboard"
+              : item.icon) +
+            "'></use></svg><span class='menu-text'>" +
+            item.title +
+            "</span></a>"
+        );
+        itm_obj.append(itm_obj_a);
+        return itm_obj;
+      },
+    });
+
+    $(".menu-item.has-sub").on("click", function (e) {
+      if (!$(e.target).closest(".side-nav").hasClass("close-nav")) {
+        var tli = $(e.target).closest("li");
+        $(this).siblings(".menu-item.has-sub").removeClass("menu-sub-open");
+        if (tli.hasClass("has-sub")) {
+          var isOpen = false;
+          if ($(this).hasClass("menu-sub-open")) {
+            isOpen = true;
+            $(this).removeClass("menu-sub-open");
+          } else {
+            $(this).addClass("menu-sub-open");
+          }
+        }
+      }
+    });
+  }
+
+  $("#sidenav .menu-item > a").click(function () {
+    $("#sidenav .menu-item > a").removeClass("active");
+    $(this).addClass("active");
+  });
+
+  $(document).on("click", "#toggle-sidenav", function () {
+    $(".menu-item.has-sub").removeClass("menu-sub-open");
+    if ($("#sidenav").hasClass("close-nav")) {
+      localStorage.setItem("menuOpen", false);
+    } else {
+      localStorage.setItem("menuOpen", true);
+    }
+  });
+  var menu_state = localStorage.getItem("menuOpen");
+  if (menu_state == "false") {
+    $("#sidenav").addClass("close-nav");
+  }
+
+  $(document).on("click", ".back-btn", function () {
+    window.history.back();
+  });
+</script>
