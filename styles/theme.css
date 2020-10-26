@@ -1,6 +1,5 @@
 :root {
   --primary: #000000;
-  --primary2: #0052cc;
   --secondary: #607793;
   --tertiary: #ffffff;
   --greenbg: #02a499;
@@ -12,8 +11,6 @@
   --text-color: #000000;
   --menu-highlight: #ffffff44;
 }
-
-/* ggfgfgh */
 
 ::-webkit-scrollbar {
   width: 6px;
