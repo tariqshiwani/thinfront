@@ -77,7 +77,6 @@
           completeCb
         ) {
           if (!this.permission.check(url)) {
-            //callback({ responseCode: 403, data: null }, false);
             if (window.tf)
               if (window.tf.events)
                 if (window.tf.events.servicePermission)
@@ -93,7 +92,7 @@
           }
           if (strData.length > 0) strData = "?" + strData;
           if (showLoader) {
-            loader.show($(".content-area")); //(showLoader);
+            //showLoader
           }
           var req = function (
             url,
@@ -143,18 +142,12 @@
                           "server"
                         );
                 } else if (e.status == 404) {
-                  snackbar.show("Resource Not found", "cs-danger");
+                  // show resource not found message
                 } else {
                   if (!navigator.onLine) {
-                    snackbar.show(
-                      "Network unavailable, please check your internet connection.",
-                      "cs-danger"
-                    );
+                    // show network unavailable message
                   }
-                  // snackbar.show(
-                  //   "Unexpected error in communicating to server",
-                  //   "cs-danger"
-                  // );
+
                   if (callback != null) {
                     callback(e, false, reason);
                   }
@@ -198,7 +191,7 @@
                       tf.cookies.erase("token");
                       tf.cookies.erase("UserDetails");
                       redirectToLogin();
-                      //snackbar.show("Invalid or Expired Token. Try login again", "cs-danger");
+                      // show token expire message
                     }
                   });
                 } else {
@@ -206,7 +199,7 @@
                   tf.cookies.erase("UserDetails");
                   tf.cookies.erase("isRefreshedToken");
                   redirectToLogin();
-                  //snackbar.show("Invalid or Expired Token. Try login again", "cs-danger");
+                  // show token expire message
                 }
               } else {
                 tf.cookies.erase("token");
@@ -238,7 +231,7 @@
             return;
           }
           if (showLoader) {
-            loader.show($(".content-area")); //loader.show(showLoader);
+            //showLoader
           }
           var req = function (
             url,
@@ -292,12 +285,8 @@
                           "server"
                         );
                 } else if (e.status == 404) {
-                  snackbar.show("Resource Not found", "cs-danger");
+                  // show resource not found message
                 } else {
-                  // snackbar.show(
-                  //   "Unexpected error in communicating to server",
-                  //   "cs-danger"
-                  // );
                   if (callback != null) {
                     callback(e, false);
                   }
@@ -344,7 +333,7 @@
                       tf.cookies.erase("UserDetails");
                       tf.cookies.erase("isRefreshedToken");
                       redirectToLogin();
-                      //snackbar.show("Invalid or Expired Token. Try login again", "cs-danger");
+                      // show token expired message
                     }
                   });
                 } else {
@@ -352,7 +341,7 @@
                   tf.cookies.erase("UserDetails");
                   tf.cookies.erase("isRefreshedToken");
                   redirectToLogin();
-                  //snackbar.show("Invalid or Expired Token. Try login again", "cs-danger");
+                  // show token expired message
                 }
               } else {
                 tf.cookies.erase("token");

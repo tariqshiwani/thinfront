@@ -1,0 +1,25 @@
+{
+  "name": "thinfront",
+  "version": "1.0.0",
+  "description": "General purpose frontend framework based on jQuery",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tariqshiwani/thinfront.git"
+  },
+  "keywords": [
+    "front",
+    "frontend",
+    "jquery",
+    "lightweight"
+  ],
+  "author": "Tariq Shiwani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tariqshiwani/thinfront/issues"
+  },
+  "homepage": "https://github.com/tariqshiwani/thinfront#readme"
+}

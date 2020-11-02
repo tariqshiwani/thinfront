@@ -97,100 +97,6 @@
           document.cookie = name + "=; Max-Age=-99999999; path=/";
         },
       },
-      bindDataTable: function (
-        obj,
-        url,
-        columns,
-        initComplete,
-        adddata,
-        defaultorder
-      ) {
-        return $(obj).DataTable({
-          processing: true,
-          serverSide: true,
-          dom:
-            "<'datatable-header'<'left-part'<'coloumn_filter' B>><'right-part' <'search_datacs' f>>><'datatable-content't><'datatable-footer'<'left-part'l><'right-part'p>>",
-          stateSave: true,
-          stateSaveParams: function (settings, data) {
-            data.search.search = "";
-            data.length = tf.settings().DatatableItems;
-            data.start = 0;
-          },
-          language: {
-            buttons: {
-              colvisRestore: "Reset",
-            },
-          },
-          pageLength: tf.settings().DatatableItems,
-          buttons: [
-            {
-              extend: "colvis",
-              text: "Display",
-              columns: ":not(.skipth)",
-              postfixButtons: ["colvisRestore"],
-            },
-          ],
-          // colReorder: {
-          //   fixedColumnsRight: 1
-          // },
-          drawCallback: function (settings, json) {
-            //console.log(settings, json);
-            var tbl = settings.nTable;
-            initComplete(tbl);
-          },
-          initComplete: function (settings, json) {
-            var tbl = settings.nTable;
-            var tblObj = $(tbl).DataTable();
-            var wrapper = $(tbl).closest(".dataTables_wrapper");
-            var searchBox = wrapper.find(
-              ".dataTables_filter input[type=search]"
-            );
-            searchBox
-              .unbind() // Unbind previous default bindings
-              .bind("input", function (e) {
-                // Bind our desired behavior
-                // If the length is 3 or more characters, or the user pressed ENTER, search
-                if (this.value.length >= 3 || e.keyCode == 13) {
-                  // Call the API search function
-                  tblObj.search(this.value).draw();
-                }
-                // Ensure we clear the search if they backspace far enough
-                if (this.value == "") {
-                  tblObj.search("").draw();
-                }
-                return;
-              });
-          },
-          ajax: function (data, callback, settings) {
-            data = $.extend(
-              data,
-              adddata != null
-                ? typeof adddata === "function"
-                  ? adddata()
-                  : adddata
-                : {}
-            );
-
-            tf.service.post(url, data, function (d, success) {
-              if (!success || (success && d.responseCode > 0)) {
-                if (d.responseMessage == null) {
-                  snackbar.show(d.data[0].errorMessage, "cs-danger");
-                } else {
-                  snackbar.show(d.responseMessage, "cs-danger");
-                }
-                d = {
-                  draw: 1,
-                  recordsTotal: 0,
-                  recordsFiltered: 0,
-                  data: [],
-                };
-              } else callback(d.data);
-            });
-          },
-          columnDefs: columns,
-          order: defaultorder ? defaultorder : [[1, "desc"]],
-        });
-      },
       binder: {
         scatter: function (data, selector) {
           $(selector)
@@ -280,52 +186,6 @@
               });
             });
         },
-      },
-      tree: function () {
-        function prepareItems(menu, items, options, issub) {
-          $(items).each(function (i, o) {
-            var __item = "";
-            if (options.render) {
-              __item = options.render(o);
-            }
-            if (__item == "" || __item == undefined || __item == null) {
-              __item = $("<li></li>");
-              var __item_anchor = $(
-                "<a href='" +
-                  o[options.value] +
-                  "'>" +
-                  o[options.display] +
-                  "</a>"
-              );
-              __item.append(__item_anchor);
-            }
-            if (o.children != null && Array.isArray(o.children)) {
-              var __sub = $("<ul class='sub-menu'></ul>");
-              __item.append(__sub);
-              __item.addClass("has-sub");
-              __item.find("a").removeAttr("href");
-              prepareItems(__sub, o.children, options, true);
-            }
-            menu.append(__item);
-          });
-        }
-        return {
-          bind: function (data, options) {
-            if (
-              options.target != null &&
-              options.target != undefined &&
-              options.target != ""
-            ) {
-              var __target = $(options.target);
-              var __menu = __target;
-              if (__target[0].tagName.toLowerCase() != "ul") {
-                __menu = $("<ul></ul>");
-                __target.append(__menu);
-              }
-              prepareItems(__menu, data, options, false);
-            }
-          },
-        };
       },
       session: {
         values: {},
@@ -709,11 +569,9 @@
     }
 
     function renderView(viewUrl) {
-      //console.clear();
       viewUrl = settings.viewFolder + "/" + viewUrl;
       var _render = function (html) {
         var viewObj = $(html);
-        var layoutInfo = viewObj.attr("app-layout");
         var layout = viewObj.attr("app-layout");
         var newTitle =
           viewObj.attr("app-title") +
@@ -789,7 +647,7 @@
     }
 
     function includeHTML(scope) {
-      var _all_elements = $("[include-html]"); //  document.getElementsByTagName("*");
+      var _all_elements = $("[include-html]");
       _all_elements.each(function (i, e) {
         var file = settings.viewFolder + "/" + $(e).attr("include-html");
         $(e).removeAttr("include-html");
@@ -817,19 +675,6 @@
           $("[page-state]").hide();
           $("[page-state=" + state + "]").show();
           curState = state;
-          // var oldCont = $("[page-state]");
-          // oldCont.addClass("fade-out");
-
-          // oldCont[0].addEventListener("transitionend", function(e) {
-          //   console.log(e);
-          //   var t = $(e.target);
-          //   if (e.propertyName == "opacity" && e.type == "transitionend") {
-          //     t.hide();
-          //   }
-          // });
-
-          // $("[page-state=" + state + "]").removeClass("fade-out");
-          // $("[page-state=" + state + "]").show();
         },
         currentState: function () {
           return curState;
@@ -843,7 +688,6 @@
 
   if (typeof window.tf === "undefined") {
     window.tf = new thinFront();
-    //window.tf.init();
   }
 
   window.onclick = function (e) {
@@ -854,33 +698,3 @@
     }
   };
 })(window);
-
-// (function(window) {
-//   function jwt() {
-//     return ;
-//   }
-
-//   if (typeof window.token === "undefined") {
-//     window.token = new jwt();
-//   }
-// })(window);
-
-// bar code scan on autocomplete var
-//var autocompleteToBarcode = false;
-// ......
-
-// state relation to city configuration
-//var config_data = JSON.parse(tf.session.values["_menuitems"]).configurations;
-//var RelationCityToState = true;
-
-// config_data.forEach(function (obj) {
-//   //console.log(obj.Key);
-//   if (obj.Key == "IsStateRequiredforCity") {
-//     if (obj.Value == 0) {
-//       RelationCityToState = false;
-//     }
-//   }
-// });
-// ......
-
-//var decimalConfig;

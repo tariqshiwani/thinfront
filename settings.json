@@ -1,7 +1,7 @@
 {
   "layouts": {
     "login": "login.html",
-    "home": "main.html"
+    "home": "layout.html"
   },
   "home": "home",
   "viewFolder": "views",
