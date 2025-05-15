@@ -40,6 +40,8 @@ Thinfront is perfect for developers who want a simple yet powerful framework wit
 
 Here's a simple example to get started with Thinfront:
 
+#### index.html
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -75,6 +77,8 @@ Here's a simple example to get started with Thinfront:
   </body>
 </html>
 ```
+
+#### app.js
 
 ```html
 <script>
