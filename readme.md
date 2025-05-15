@@ -162,9 +162,17 @@ Here's a simple example to get started with Thinfront:
 #### settings.json
 
 ```html
-{ "layouts": { "login": "login.html", "home": "main.html" }, "home": "home",
-"viewFolder": "views", "allowBrowserCache": false, "serviceUrl":
-"https://myapiurl", "applicationTitle": "ThinFront Application" }
+{
+  "layouts": {
+    "login": "login.html",
+    "home": "main.html"
+  },
+  "home": "home",
+  "viewFolder": "views",
+  "allowBrowserCache": false,
+  "serviceUrl": "https://myapiurl",
+  "applicationTitle": "ThinFront Application"
+}
 ```
 
 ## Documentation
