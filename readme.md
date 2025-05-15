@@ -128,6 +128,45 @@ Here's a simple example to get started with Thinfront:
 </script>
 ```
 
+#### layout.html
+
+```html
+<div include-html="_shared/header.html"></div>
+<div class="page-container">
+  <div include-html="_shared/sidenav.html" class="side-nav" id="sidenav"></div>
+  <div class="content-area" id="content">
+    <div class="content-flex">
+      <div container="view"></div>
+    </div>
+    <div class="footer-bar">
+      Powered by
+      <a target="_blank" href="http://thinfront.org/">Thinfront</a>
+    </div>
+  </div>
+</div>
+```
+
+#### home.html
+
+```html
+<div app-layout="home" app-title="Home">
+  <!-- here you provide the layout name which is defined in settings.json -->
+  <link href="views/home/dashboard.css" rel="stylesheet" />
+  <div page-state="dashboard">
+    <!-- your html goes here-->
+  </div>
+</div>
+<script src="views/home/dashboard.js"></script>
+```
+
+#### settings.json
+
+```html
+{ "layouts": { "login": "login.html", "home": "main.html" }, "home": "home",
+"viewFolder": "views", "allowBrowserCache": false, "serviceUrl":
+"https://myapiurl", "applicationTitle": "ThinFront Application" }
+```
+
 ## Documentation
 
 For detailed documentation and examples, please refer to the [official Thinfront documentation](#).
