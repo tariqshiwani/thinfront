@@ -1,0 +1,30 @@
+{
+  "name": "thinfront-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tariqshiwani/thinfront.git"
+  },
+  "keywords": [
+    "slim",
+    "thin",
+    "frontend",
+    "framework",
+    "lightweight"
+  ],
+  "author": "Tariq Shiwani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tariqshiwani/thinfront/issues"
+  },
+  "homepage": "https://github.com/tariqshiwani/thinfront#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
