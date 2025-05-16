@@ -27,37 +27,42 @@ Thinfront is perfect for developers who want a simple yet powerful framework wit
 
 ### Manual Install
 
-1. Include jQuery in your project:
+   1. Include jQuery in your project:
+   
+      ```html
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      ```
+   
+   2. Include Thinfront in your project:
+      ```html
+      <script src="https://cdn.jsdelivr.net/gh/tariqshiwani/thinfront@1.1/dist/tf.min.js"></script>
+      ```
 
-   ```html
-   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   ```
+### Npm install
 
-2. Include Thinfront in your project:
-   ```html
-   <script src="https://cdn.jsdelivr.net/gh/tariqshiwani/thinfront@master/src/tf.js"></script>
-   ```
-
-### npm install
-
-1. Install using following command in terminal
+   Install using following command in terminal
+   
    ```html
    npm install thinfront
    ```
-
-2A. Include Thinfront in your project:
-
+   
+   Option 1. (if your node_module folder is accessible in your html pages)
+   
    ```html
    <script src="node_modeuls/thinfront/dist/tf.min.js"></script>
    ```
-2B. if you are using expressjs you need to add following script in your application.js file
 
-```javascript
-app.use('/assets', [
-    express.static(__dirname + '/node_modules/thinfront/dist/'),
-    ...
-]);
-```
+   Option 2. (if you are using expressjs)
+   
+   ```javascript
+   app.use('/framework', [
+       express.static(__dirname + '/node_modules/thinfront/dist/'),
+   ]);
+   ```
+
+   ```html
+   <script src="/framework/tf.min.js"></script>
+   ```
 
 
 ### Basic Usage
