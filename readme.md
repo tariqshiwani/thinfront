@@ -179,8 +179,7 @@ any scripts defined the scripts tags defined in views or layout pages are moved 
 - /views/orders/index.html -> #/orders
 - /views/orders/create.html -> #/orders/create
 
-the href attributes under all the anchor tags are automatically adjusted to route to # URLs so you do not need to include # in your links. you just have to define the URL like "/home/dashboard"
-
+please make sure to include "#" before all the URLs defined in the href attribute on anchor tag i.e. "#home" or "#orders/list"
 
 ### and finally the app.js
 
