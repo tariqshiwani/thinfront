@@ -1,88 +1,100 @@
-/* product table color change */
-
-.chart-main .info-chart table#product_tabch tbody tr:nth-child(2) .color-cir{
-    background-color: #00ACFF;
+body {
+  font-size: 0.875rem;
 }
 
-.chart-main .info-chart table#product_tabch tbody tr:nth-child(3) .color-cir{
-    background-color: #5096ff;
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
 }
 
-.chart-main .info-chart table#product_tabch tbody tr:nth-child(1) .color-cir , .chart-main .info-chart table#product_tabch tbody tr:nth-child(4) .color-cir{
-    background-color: transparent;
+/*
+ * Sidebar
+ */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  /* rtl:raw:
+  right: 0;
+  */
+  bottom: 0;
+  /* rtl:remove */
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 48px 0 0; /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
 }
 
-/* SO Order table color change */
-
-.chart-main .info-chart table#so_tabch tbody tr:nth-child(1) .color-cir{
-    background-color: #56e9de;
+@media (max-width: 767.98px) {
+  .sidebar {
+    top: 5rem;
+  }
 }
 
-.chart-main .info-chart table#so_tabch tbody tr:nth-child(2) .color-cir{
-    background-color: #317ee8;
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
 
-.chart-main .info-chart table#so_tabch tbody tr:nth-child(3) .color-cir{
-    background-color: #3ebce8;
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
 }
 
-.chart-main .info-chart table#so_tabch tbody tr:nth-child(4) .color-cir{
-    background-color: #7b828a;
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #727272;
 }
 
-/* PO Order table color change */
-
-.chart-main .info-chart table#po_tabch tbody tr:nth-child(1) .color-cir{
-    background-color: #ffb46e;
+.sidebar .nav-link.active {
+  color: #2470dc;
 }
 
-.chart-main .info-chart table#po_tabch tbody tr:nth-child(2) .color-cir{
-    background-color: #4b9bff;
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
 }
 
-.chart-main .info-chart table#po_tabch tbody tr:nth-child(3) .color-cir{
-    background-color: #ff5f5f;
+.sidebar-heading {
+  font-size: 0.75rem;
+  text-transform: uppercase;
 }
 
-.chart-main .info-chart table#po_tabch tbody tr:nth-child(4) .color-cir{
-    background-color: #76DDFB;
+/*
+ * Navbar
+ */
+
+.navbar-brand {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0.25);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25);
 }
 
-/* Out Shipment Order table color change */
-
-.chart-main .info-chart table#ship_tabch tbody tr:nth-child(1) .color-cir{
-    background-color: #86c7f3;
+.navbar .navbar-toggler {
+  top: 0.25rem;
+  right: 1rem;
 }
 
-.chart-main .info-chart table#ship_tabch tbody tr:nth-child(2) .color-cir{
-    background-color: #ffa1b5;
+.navbar .form-control {
+  padding: 0.75rem 1rem;
+  border-width: 0;
+  border-radius: 0;
 }
 
-.chart-main .info-chart table#ship_tabch tbody tr:nth-child(3) .color-cir{
-    background-color: #ffe29a;
+.form-control-dark {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
-.chart-canvas canvas{
-    box-shadow: inset 0 0 0 11px black;
-    -moz-box-shadow: inset 0 0 0 11px black;
-    -webkit-box-shadow: inset 0 0 0 11px #e8e8e8;
-    border-radius: 100%;
-}
-
-#chartjs-tooltip table tbody tr td{
-    background: #000;
-    color: #fff;
-    border-radius: 5px;
-    padding: 2px 5px;
-    font-size: 10px;
-}
-
-#chartjs-tooltip table tbody tr td span {
-    width: 10px;
-    height: 10px;
-    position: relative;
-    top: 1px;
-    display: inline-block;
-    margin-right: 3px;
-    border: 1px solid #fff;
+.form-control-dark:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
 }

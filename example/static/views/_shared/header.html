@@ -1,64 +1,25 @@
-<nav class="light">
-  <div class="nav-block brand">
-    <a href="#">
-      <img class="" style="max-height: 30px;" src="assets/images/logo.png" />
-    </a>
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
+  <button
+    class="navbar-toggler position-absolute d-md-none collapsed"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#sidebarMenu"
+    aria-controls="sidebarMenu"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <input
+    class="form-control form-control-dark w-100"
+    type="text"
+    placeholder="Search"
+    aria-label="Search"
+  />
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="#">Sign out</a>
+    </div>
   </div>
-  <div class="nav-block menu" id="m_header_menu" style="display: none;">
-    <ul class="horizontal-menu" data-repeat="menuList">
-      <li class="menu-item">
-        <a data-repeat-item="href:Route">
-          <i class="fa fa-home"></i>
-          <span class="menu-item-text" data-repeat-item="Title"> </span>
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div class="nav-block right-block">
-    <ul class="right_panel_header">
-      <li>
-        <ul class="profile-options">
-          <li>
-            <div id="userName" class="user-name">
-              <div class="dropdown">
-                <button
-                  class="btn btn-primary user-names dropdown-toggle"
-                  type="button"
-                  data-toggle="dropdown"
-                >
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a onclick="ShowProfileModal();"
-                      ><i class="fa fa-user"></i><span>My Profile</span></a
-                    >
-                  </li>
-                  <li>
-                    <a onclick="ShowChangePasswordModal();"
-                      ><i class="fa fa-key"></i><span>Change Password</span></a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </li>
-          <li class="">
-            <svg class="">
-              <use xlink:href="assets/images/icons.svg#ic_bell"></use>
-            </svg>
-          </li>
-          <li class="">
-            <a id="signOut">
-              <svg class="">
-                <use xlink:href="assets/images/icons.svg#ic_logout"></use>
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-<script src="views/_shared/header.js"></script>
+</header>
