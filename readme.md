@@ -23,18 +23,47 @@ Thinfront is perfect for developers who want a simple yet powerful framework wit
 
 - **jQuery**: Thinfront requires jQuery to function. You can include any version of jQuery in your project.
 
-### Installation
+## Installation
 
-1. Include jQuery in your project:
+### Manual Install
 
+   1. Include jQuery in your project:
+   
+      ```html
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      ```
+   
+   2. Include Thinfront in your project:
+      ```html
+      <script src="https://cdn.jsdelivr.net/gh/tariqshiwani/thinfront@1.1/dist/tf.min.js"></script>
+      ```
+
+### Npm install
+
+   Install using following command in terminal
+   
    ```html
-   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   npm install thinfront
+   ```
+   
+   Option 1. (if your node_module folder is accessible in your html pages)
+   
+   ```html
+   <script src="node_modeuls/thinfront/dist/tf.min.js"></script>
    ```
 
-2. Include Thinfront in your project:
-   ```html
-   <script src="https://cdn.jsdelivr.net/gh/tariqshiwani/thinfront@master/src/tf.js"></script>
+   Option 2. (if you are using expressjs)
+   
+   ```javascript
+   app.use('/framework', [
+       express.static(__dirname + '/node_modules/thinfront/dist/'),
+   ]);
    ```
+
+   ```html
+   <script src="/framework/tf.min.js"></script>
+   ```
+
 
 ### Basic Usage
 
@@ -43,33 +72,33 @@ Here's a simple example to get started with Thinfront:
 #### Folder structure
 
 ```html
-[+] Root Folder
- |-> settings.json
- |-> url_rewrite.json
- |-> index.html
- |-> [+] layouts
- |    |-> layout.html
- |-> [+] scripts
- |    |-> app.js
- |-> [+] styles
- |    |-> style.css
- |-> [+] views
-      |-> home.html
+  [+] Root Folder
+   |-> settings.json
+   |-> url_rewrite.json
+   |-> index.html
+   |-> [+] layouts
+   |    |-> layout.html
+   |-> [+] scripts
+   |    |-> app.js
+   |-> [+] styles
+   |    |-> style.css
+   |-> [+] views
+        |-> home.html
 ```
 
 #### settings.json
 
-```html
+```json
 {
-  "layouts": {
-    "login": "login.html",
-    "home": "main.html"
-  },
-  "home": "home",
-  "viewFolder": "views",
-  "allowBrowserCache": false,
-  "serviceUrl": "https://myapiurl",
-  "applicationTitle": "ThinFront Application"
+    "layouts": {
+        "login": "login.html",
+        "home": "main.html"
+    },
+    "home": "home",
+    "viewFolder": "views",
+    "allowBrowserCache": false,
+    "serviceUrl": "https://myapiurl",
+    "applicationTitle": "ThinFront Application"
 }
 ```
 
@@ -82,7 +111,6 @@ Here's a simple example to get started with Thinfront:
 - **applicationTitle** is where you define the application title, which is shown all the time in page title along with the title from the view separated by "-"
 
 settings.json file is a required file and without it the framework will not function properly.
-
 
 #### index.html
 
@@ -125,12 +153,11 @@ settings.json file is a required file and without it the framework will not func
 #### Understanding the index.html
 
 - this page is an entry point of the application and a required file.
-- the div with Id __app_layout is where the layout of the page will be loaded.
-- the element with Id __layout_scripts is where the scripts from the layout page will be loaded.
-- __view_scripts element contains the view level scripts.
+- the div with Id \_\_app_layout is where the layout of the page will be loaded.
+- the element with Id \_\_layout_scripts is where the scripts from the layout page will be loaded.
+- \_\_view_scripts element contains the view level scripts.
 
 any scripts defined the scripts tags defined in views or layout pages are moved to their respective sections defined above on the fly, and when the view or layout is changed those scripts are unloaded.
-
 
 #### layout.html
 
@@ -151,6 +178,7 @@ any scripts defined the scripts tags defined in views or layout pages are moved 
 ```
 
 #### Understanding the layout.html
+
 - include-html attribute includes the shared view (html file) under the element, this works on both the view and the layout.
 - container="view" attribute is the element where your views will be loaded.
 
@@ -170,10 +198,11 @@ any scripts defined the scripts tags defined in views or layout pages are moved 
 #### Understanding view
 
 - **app-layout** is the attribute where you define the layout page, when this view is loaded the framework automatically loads the layout page specified, if there is any other view already loaded it will be unloaded first.
-- the script section defined here will automatically be moved to **__view_scripts** element defined in the index.html
+- the script section defined here will automatically be moved to **\_\_view_scripts** element defined in the index.html
 - the url of your application contains # anything after this sign refers to the folder structure under the **views** folder, you can have multiple folders under views folder and multiple html files under them, the default page for each folder is index.html.
 
 **the URLs for the folder will be as follows**
+
 - /views/home/index.html -> #/home
 - /views/home/dashboard.html -> #/home/dashboard
 - /views/orders/index.html -> #/orders
@@ -185,11 +214,10 @@ please make sure to include "#" before all the URLs defined in the href attribut
 
 this file initializes the thinfront framework.
 
-
 #### app.js
 
-```html
-<script>
+```javascript
+
   $(document).ready(function () {
     tf.init();
     if (typeof window.tf !== "undefined") {
@@ -233,15 +261,13 @@ this file initializes the thinfront framework.
       })();
     }
   });
-</script>
+
 ```
 
 #### Understanding the app.js
 
 - it adds tf object under the window object which can be refered as window.tf and contains all the additional functionality of the framework, i.e. current page object, user object (if logged in) etc.
 - under the events property there is an event object defined which lets you run your own code on different events, these are global events and will be triggered automatically when those events occur.
-  
-
 
 ## Documentation
 

@@ -1,0 +1,11 @@
+{
+  "layouts": {
+    "login": "login.html",
+    "home": "main.html"
+  },
+  "home": "home",
+  "viewFolder": "views",
+  "allowBrowserCache": false,
+  "serviceUrl": "https://myapiurl",
+  "applicationTitle": "ThinFront Application"
+}
