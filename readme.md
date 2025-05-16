@@ -40,6 +40,50 @@ Thinfront is perfect for developers who want a simple yet powerful framework wit
 
 Here's a simple example to get started with Thinfront:
 
+#### Folder structure
+
+```html
+[+] Root Folder
+ |-> settings.json
+ |-> url_rewrite.json
+ |-> index.html
+ |-> [+] layouts
+ |    |-> layout.html
+ |-> [+] scripts
+ |    |-> app.js
+ |-> [+] styles
+ |    |-> style.css
+ |-> [+] views
+      |-> home.html
+```
+
+#### settings.json
+
+```html
+{
+  "layouts": {
+    "login": "login.html",
+    "home": "main.html"
+  },
+  "home": "home",
+  "viewFolder": "views",
+  "allowBrowserCache": false,
+  "serviceUrl": "https://myapiurl",
+  "applicationTitle": "ThinFront Application"
+}
+```
+
+#### Understanding settings.json
+
+- **layouts** property is where you can define multiple layouts to be used with your views, you can later refer to any of these layouts in your views, when navigated to that view it will automatically load the specified layout
+- **home** is where you define your first landing page, the value should be the name of the html file without the extension.
+- **viewFolder** is the property where you define which folder contains all the views, default folder name is always set to views but you can change it to serve your views from different folders.
+- **allowBrowserCache** when set to true, the framework will start caching the views as they are loaded and will be served from browser's cache next time.
+- **applicationTitle** is where you define the application title, which is shown all the time in page title along with the title from the view separated by "-"
+
+settings.json file is a required file and without it the framework will not function properly.
+
+
 #### index.html
 
 ```html
@@ -77,6 +121,71 @@ Here's a simple example to get started with Thinfront:
   </body>
 </html>
 ```
+
+#### Understanding the index.html
+
+- this page is an entry point of the application and a required file.
+- the div with Id __app_layout is where the layout of the page will be loaded.
+- the element with Id __layout_scripts is where the scripts from the layout page will be loaded.
+- __view_scripts element contains the view level scripts.
+
+any scripts defined the scripts tags defined in views or layout pages are moved to their respective sections defined above on the fly, and when the view or layout is changed those scripts are unloaded.
+
+
+#### layout.html
+
+```html
+<div include-html="_shared/header.html"></div>
+<div class="page-container">
+  <div include-html="_shared/sidenav.html" class="side-nav" id="sidenav"></div>
+  <div class="content-area" id="content">
+    <div class="content-flex">
+      <div container="view"></div>
+    </div>
+    <div class="footer-bar">
+      Powered by
+      <a target="_blank" href="http://thinfront.org/">Thinfront</a>
+    </div>
+  </div>
+</div>
+```
+
+#### Understanding the layout.html
+- include-html attribute includes the shared view (html file) under the element, this works on both the view and the layout.
+- container="view" attribute is the element where your views will be loaded.
+
+#### views
+
+```html
+<div app-layout="home" app-title="Home">
+  <!-- here you provide the layout name which is defined in settings.json -->
+  <link href="views/home/dashboard.css" rel="stylesheet" />
+  <div page-state="dashboard">
+    <!-- your html goes here-->
+  </div>
+</div>
+<script src="views/home/dashboard.js"></script>
+```
+
+#### Understanding view
+
+- **app-layout** is the attribute where you define the layout page, when this view is loaded the framework automatically loads the layout page specified, if there is any other view already loaded it will be unloaded first.
+- the script section defined here will automatically be moved to **__view_scripts** element defined in the index.html
+- the url of your application contains # anything after this sign refers to the folder structure under the **views** folder, you can have multiple folders under views folder and multiple html files under them, the default page for each folder is index.html.
+
+**the URLs for the folder will be as follows**
+- /views/home/index.html -> #/home
+- /views/home/dashboard.html -> #/home/dashboard
+- /views/orders/index.html -> #/orders
+- /views/orders/create.html -> #/orders/create
+
+the href attributes under all the anchor tags are automatically adjusted to route to # URLs so you do not need to include # in your links. you just have to define the URL like "/home/dashboard"
+
+
+### and finally the app.js
+
+this file initializes the thinfront framework.
+
 
 #### app.js
 
@@ -128,56 +237,16 @@ Here's a simple example to get started with Thinfront:
 </script>
 ```
 
-#### layout.html
+#### Understanding the app.js
 
-```html
-<div include-html="_shared/header.html"></div>
-<div class="page-container">
-  <div include-html="_shared/sidenav.html" class="side-nav" id="sidenav"></div>
-  <div class="content-area" id="content">
-    <div class="content-flex">
-      <div container="view"></div>
-    </div>
-    <div class="footer-bar">
-      Powered by
-      <a target="_blank" href="http://thinfront.org/">Thinfront</a>
-    </div>
-  </div>
-</div>
-```
+- it adds tf object under the window object which can be refered as window.tf and contains all the additional functionality of the framework, i.e. current page object, user object (if logged in) etc.
+- under the events property there is an event object defined which lets you run your own code on different events, these are global events and will be triggered automatically when those events occur.
+  
 
-#### home.html
-
-```html
-<div app-layout="home" app-title="Home">
-  <!-- here you provide the layout name which is defined in settings.json -->
-  <link href="views/home/dashboard.css" rel="stylesheet" />
-  <div page-state="dashboard">
-    <!-- your html goes here-->
-  </div>
-</div>
-<script src="views/home/dashboard.js"></script>
-```
-
-#### settings.json
-
-```html
-{
-  "layouts": {
-    "login": "login.html",
-    "home": "main.html"
-  },
-  "home": "home",
-  "viewFolder": "views",
-  "allowBrowserCache": false,
-  "serviceUrl": "https://myapiurl",
-  "applicationTitle": "ThinFront Application"
-}
-```
 
 ## Documentation
 
-For detailed documentation and examples, please refer to the [official Thinfront documentation](#).
+For detailed documentation and examples, please refer to the [official Thinfront documentation](http://thinfront.org).
 
 ## Contributing
 
