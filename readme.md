@@ -40,11 +40,25 @@ Thinfront is perfect for developers who want a simple yet powerful framework wit
 
 ### npm install
 
-```html
-npm install thinfront
+1. Install using following command in terminal
+   ```html
+   npm install thinfront
+   ```
+
+2A. Include Thinfront in your project:
+
+   ```html
+   <script src="node_modeuls/thinfront/dist/tf.min.js"></script>
+   ```
+2B. if you are using expressjs you need to add following script in your application.js file
+
+```javascript
+app.use('/assets', [
+    express.static(__dirname + '/node_modules/thinfront/dist/'),
+    ...
+]);
 ```
 
-once installed you can find the library at the following path "node_modules/thinfront/dist/tf.min.js"
 
 ### Basic Usage
 
@@ -53,17 +67,34 @@ Here's a simple example to get started with Thinfront:
 #### Folder structure
 
 ```html
-[+] Root Folder |-> settings.json |-> url_rewrite.json |-> index.html |-> [+]
-layouts | |-> layout.html |-> [+] scripts | |-> app.js |-> [+] styles | |->
-style.css |-> [+] views |-> home.html
+  [+] Root Folder
+   |-> settings.json
+   |-> url_rewrite.json
+   |-> index.html
+   |-> [+] layouts
+   |    |-> layout.html
+   |-> [+] scripts
+   |    |-> app.js
+   |-> [+] styles
+   |    |-> style.css
+   |-> [+] views
+        |-> home.html
 ```
 
 #### settings.json
 
-```html
-{ "layouts": { "login": "login.html", "home": "main.html" }, "home": "home",
-"viewFolder": "views", "allowBrowserCache": false, "serviceUrl":
-"https://myapiurl", "applicationTitle": "ThinFront Application" }
+```json
+{
+    "layouts": {
+        "login": "login.html",
+        "home": "main.html"
+    },
+    "home": "home",
+    "viewFolder": "views",
+    "allowBrowserCache": false,
+    "serviceUrl": "https://myapiurl",
+    "applicationTitle": "ThinFront Application"
+}
 ```
 
 #### Understanding settings.json
@@ -180,8 +211,8 @@ this file initializes the thinfront framework.
 
 #### app.js
 
-```html
-<script>
+```javascript
+
   $(document).ready(function () {
     tf.init();
     if (typeof window.tf !== "undefined") {
@@ -225,7 +256,7 @@ this file initializes the thinfront framework.
       })();
     }
   });
-</script>
+
 ```
 
 #### Understanding the app.js
