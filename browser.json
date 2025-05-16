@@ -1,0 +1,15 @@
+{
+  "name": "thinfront",
+  "main": "dist/tf.js",
+  "license": "MIT",
+  "ignore": [
+    "package.json"
+  ],
+  "keywords": [
+    "slim",
+    "thin",
+    "frontend",
+    "framework",
+    "lightweight"
+  ],
+}

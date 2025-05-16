@@ -1,0 +1,44 @@
+{
+  "name": "thinfront",
+  "title": "ThinFront",
+  "version": "1.0.5",
+  "public": true,
+  "description": "A lightweight frontend framework for building web applications.",
+  "homepage": "http://thinfront.org",
+    "author": {
+    "name": "Tariq Shiwani",
+    "url": "https://github.com/jquery/jquery/blob/3.7.1/AUTHORS.txt"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "serve dist",
+    "publish": "npm publish --access public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tariqshiwani/thinfront.git"
+  },
+  "keywords": [
+    "slim",
+    "thin",
+    "frontend",
+    "framework",
+    "lightweight"
+  ],
+  "author": "Tariq Shiwani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tariqshiwani/thinfront/issues"
+  },
+  "homepage": "https://github.com/tariqshiwani/thinfront#readme",
+  "description": "",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "serve": "^12.0.0",
+    "webpack": "^5.99.8",
+    "webpack-cli": "^4.7.2"
+  }
+}
