@@ -45,11 +45,20 @@ Thinfront is perfect for developers who want a simple yet powerful framework wit
    npm install thinfront
    ```
 
-2. Include Thinfront in your project:
+2A. Include Thinfront in your project:
 
    ```html
    <script src="node_modeuls/thinfront/dist/tf.min.js"></script>
    ```
+2B. if you are using expressjs you need to add following script in your application.js file
+
+```javascript
+app.use('/assets', [
+    express.static(__dirname + '/node_modules/thinfront/dist/'),
+    ...
+]);
+```
+
 
 ### Basic Usage
 
