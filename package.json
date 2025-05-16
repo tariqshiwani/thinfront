@@ -4,10 +4,9 @@
   "version": "1.0.5",
   "public": true,
   "description": "A lightweight frontend framework for building web applications.",
-  "homepage": "http://thinfront.org",
     "author": {
     "name": "Tariq Shiwani",
-    "url": "https://github.com/jquery/jquery/blob/3.7.1/AUTHORS.txt"
+    "url": "https://github.com/tariqshiwani/thinfront/blob/1.1/AUTHORS.txt"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tariqshiwani/thinfront.git"
+    "url": "https://github.com/tariqshiwani/thinfront.git"
   },
   "keywords": [
     "slim",
@@ -26,13 +25,11 @@
     "framework",
     "lightweight"
   ],
-  "author": "Tariq Shiwani",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/tariqshiwani/thinfront/issues"
   },
   "homepage": "https://github.com/tariqshiwani/thinfront#readme",
-  "description": "",
   "dependencies": {
     "lodash": "^4.17.21"
   },
